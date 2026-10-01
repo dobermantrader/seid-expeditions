@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сейд — экспедиции к местам силы</title>
+<meta name="description" content="Экспедиции к мегалитам и местам силы Кольского полуострова, Карелии и Урала. Классические экскурсии и закрытые экспедиции малых групп.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --granite:#E3E2DA; --granite-2:#D3D2C8; --paper:#EFEEE8;
+  --basalt:#181D1F; --basalt-2:#242B2E;
+  --lichen:#8C9A38; --amber:#E0922F; --teal:#2F5F63; --rust:#A94A2A;
+  --ink:#181D1F; --ink-soft:#4B5457; --line:rgba(24,29,31,.18);
+  --display:'Forum','Noto Serif SC','Songti SC',serif;
+  --body:'Onest','PingFang SC','Microsoft YaHei',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --gut:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--granite);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background:repeating-radial-gradient(ellipse at 20% 30%,transparent 0 38px,rgba(24,29,31,.045) 38px 39px),
+             repeating-radial-gradient(ellipse at 85% 75%,transparent 0 52px,rgba(24,29,31,.04) 52px 53px)}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(34px,5vw,64px)}
+section{padding:clamp(64px,9vw,120px) 0}
+.eyebrow{display:flex;gap:12px;align-items:center;color:var(--ink-soft);margin-bottom:20px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--ink-soft);max-width:60ch}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(227,226,218,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:26px;letter-spacing:.04em}
+.brand svg{width:26px;height:30px}
+.nav ul{display:flex;gap:28px;list-style:none;padding:0}
+.nav ul a{text-decoration:none;font-size:14px;color:var(--ink-soft)}
+.nav ul a:hover{color:var(--ink)}
+.nav-r{display:flex;gap:10px;align-items:center}
+.seg{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.seg button{font:500 12px var(--mono);padding:6px 10px;background:none;border:0;cursor:pointer;color:var(--ink-soft)}
+.seg button[aria-pressed=true]{background:var(--basalt);color:var(--granite)}
+select.cur{font:500 12px var(--mono);border:1px solid var(--line);background:none;border-radius:99px;padding:6px 8px;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:99px;border:1px solid var(--basalt);background:var(--basalt);color:var(--granite);text-decoration:none;font:500 15px var(--body);cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--teal);border-color:var(--teal)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--basalt);color:var(--granite)}
+.btn.amber{background:var(--amber);border-color:var(--amber);color:var(--basalt)}
+.btn.amber:hover{background:#f0a548;border-color:#f0a548}
+.btn.sm{padding:9px 16px;font-size:14px}
+@media(max-width:900px){.nav ul{display:none}}
+
+/* hero */
+.hero{padding:clamp(40px,6vw,80px) 0 clamp(48px,6vw,90px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,112px);margin:18px 0 28px}
+.hero h1 em{font-style:normal;color:var(--rust)}
+:lang(zh) h1,:lang(zh) h2{line-height:1.2;letter-spacing:0}
+.hero .coord{color:var(--teal)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.regions{display:flex;gap:8px;flex-wrap:wrap;margin-top:36px}
+.regions span{border:1px solid var(--line);padding:5px 12px;border-radius:99px;font:500 12px var(--mono);letter-spacing:.05em;color:var(--ink-soft)}
+.spiral-box{position:relative;aspect-ratio:1;max-width:560px;justify-self:center;width:100%}
+.spiral-box svg{width:100%;height:100%;overflow:visible}
+.stone{fill:#9d9c92;stroke:#6f6e66;stroke-width:1;opacity:0;transform-box:fill-box;transform-origin:center;animation:place .5s cubic-bezier(.2,1.4,.4,1) forwards;animation-delay:calc(var(--i)*22ms + .2s);transition:fill .25s}
+.stone.lit{fill:var(--lichen);stroke:#566016}
+.stone.core{fill:var(--amber);stroke:#8a5410}
+@keyframes place{from{opacity:0;transform:translateY(-16px) scale(1.5)}to{opacity:1;transform:none}}
+.readout{position:absolute;left:0;right:0;bottom:-6px;display:flex;justify-content:space-between;color:var(--ink-soft)}
+.walk-hint{position:absolute;top:-4px;right:0;color:var(--ink-soft)}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.spiral-box{max-width:420px}}
+
+/* paths */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:48px;border:1px solid var(--line)}
+.path{padding:clamp(28px,4vw,56px)}
+.path h3{font-size:clamp(30px,3.6vw,48px);margin:10px 0 14px}
+.path ul{list-style:none;padding:0;margin-top:24px;display:grid;gap:10px}
+.path li{display:flex;gap:12px;font-size:16px}
+.path li::before{content:"";flex:none;width:7px;height:7px;margin-top:10px;background:currentColor;transform:rotate(45deg)}
+.path.classic{background:var(--paper)}
+.path.excl{background:var(--basalt);color:var(--granite)}
+.path.excl .mono{color:var(--amber)}
+.path.excl p{color:#b9bdb5}
+.path.excl li::before{background:var(--amber)}
+@media(max-width:800px){.paths{grid-template-columns:1fr}}
+
+/* atlas */
+.atlas{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(20px,3vw,48px);margin-top:44px;align-items:start}
+.map{background:var(--paper);border:1px solid var(--line);padding:12px;position:relative}
+.map svg{width:100%;height:auto;display:block}
+.grid-l{stroke:rgba(24,29,31,.09);stroke-width:1}
+.arctic{stroke:var(--teal);stroke-dasharray:4 5;stroke-width:1.2}
+.pin{cursor:pointer}
+.pin circle.dot{fill:var(--rust);stroke:var(--paper);stroke-width:2;transition:r .2s,fill .2s}
+.pin circle.halo{fill:var(--rust);opacity:.18;transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+.pin:hover circle.dot,.pin[aria-pressed=true] circle.dot{fill:var(--amber);r:9}
+.pin text{font:500 11px var(--mono);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:4px;letter-spacing:.04em}
+@keyframes pulse{0%{transform:scale(.6);opacity:.4}100%{transform:scale(2.4);opacity:0}}
+.maplabel{font:500 10px var(--mono);fill:var(--ink-soft);letter-spacing:.12em}
+.panel{border:1px solid var(--line);background:var(--paper);padding:28px;position:sticky;top:84px}
+.panel h3{font-size:34px;margin:8px 0 6px}
+.panel .meta{color:var(--teal)}
+.panel p{margin:14px 0}
+.tag{display:inline-block;padding:3px 10px;border-radius:99px;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.tag.arch{background:var(--teal);color:#fff}
+.tag.lore{background:var(--amber);color:var(--basalt)}
+.tag.hyp{background:transparent;border:1px dashed var(--rust);color:var(--rust)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--ink-soft)}
+.legend span{display:flex;align-items:center;gap:8px}
+.abroad{margin-top:28px;padding-top:20px;border-top:1px dashed var(--line);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.abroad .chip{border:1px solid var(--line);padding:4px 12px;border-radius:99px;font-size:14px;background:var(--paper)}
+@media(max-width:900px){.atlas{grid-template-columns:1fr}.panel{position:static}}
+
+/* tours */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 28px}
+.filters button{font:500 13px var(--body);padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:none;cursor:pointer;color:var(--ink)}
+.filters button[aria-pressed=true]{background:var(--basalt);color:var(--granite);border-color:var(--basalt)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(24,29,31,.5)}
+.card .art{height:150px;position:relative;display:grid;place-items:center;overflow:hidden;background:var(--granite-2)}
+.card.x .art{background:var(--basalt-2)}
+.card .art svg{width:110px;height:110px}
+.card .badge{position:absolute;top:12px;left:12px}
+.card .spots{position:absolute;top:12px;right:12px;font:500 11px var(--mono);padding:3px 9px;border-radius:99px;background:var(--paper);color:var(--rust)}
+.card.x .spots{background:var(--amber);color:var(--basalt)}
+.card .bd{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{font-size:27px;line-height:1.12}
+.card p{font-size:15px;color:var(--ink-soft)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-top:auto}
+.facts div{font-size:13px;line-height:1.3}
+.facts b{display:block;font:500 10px var(--mono);letter-spacing:.08em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:3px;font-weight:500}
+.price{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.price strong{font:400 28px var(--display)}
+.price small{display:block;font:500 10px var(--mono);color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
+.note{margin-top:22px;font-size:13px;color:var(--ink-soft)}
+
+/* asia */
+.asia{background:var(--basalt);color:var(--granite)}
+.asia .eyebrow{color:#9aa19a}
+.asia .lead{color:#b9bdb5}
+.asia-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);margin-top:44px}
+.spiral-words{display:grid;gap:18px}
+.spiral-words div{padding:20px 0;border-top:1px solid rgba(227,226,218,.2)}
+.spiral-words div:last-child{border-bottom:1px solid rgba(227,226,218,.2)}
+.spiral-words b{font:400 28px var(--display);color:var(--amber);display:block}
+.svc{display:grid;gap:14px;list-style:none;padding:0}
+.svc li{padding:16px 18px;border:1px solid rgba(227,226,218,.2);display:grid;gap:2px}
+.svc li b{font-weight:500}
+.svc li span{font-size:15px;color:#b9bdb5}
+@media(max-width:850px){.asia-grid{grid-template-columns:1fr}}
+
+/* season */
+.season{margin-top:40px}
+.srow{display:grid;grid-template-columns:minmax(84px,150px) repeat(12,minmax(0,1fr));gap:3px;align-items:center;margin-bottom:6px}
+.srow .l{font-size:14px;line-height:1.2}
+@media(max-width:600px){.srow .l{font-size:12px}.srow.h .m{font-size:8px}}
+.srow i{height:26px;background:rgba(24,29,31,.07);border-radius:3px}
+.srow i.on{background:var(--teal)}
+.srow.a i.on{background:var(--lichen)}
+.srow.w i.on{background:var(--amber)}
+.srow.s i.on{background:var(--rust)}
+.srow.h .m{font:500 10px var(--mono);color:var(--ink-soft);text-align:center}
+
+/* ethic */
+.ethic{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--ink)}
+.ethic div{padding:26px 26px 26px 0}
+.ethic div+div{padding-left:26px;border-left:1px solid var(--line)}
+.ethic h3{font-size:26px;margin-bottom:10px}
+.ethic p{font-size:15px;color:var(--ink-soft)}
+@media(max-width:800px){.ethic{grid-template-columns:1fr}.ethic div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+/* faq */
+.faq{max-width:820px;margin-top:36px}
+details{border-top:1px solid var(--line);padding:18px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font:400 24px var(--display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-family:var(--mono)}
+details[open] summary::after{content:"–"}
+summary::-webkit-details-marker{display:none}
+details p{margin-top:12px;color:var(--ink-soft);max-width:64ch}
+
+/* form */
+.book{background:var(--paper);border-top:1px solid var(--line)}
+.book .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,80px)}
+form{display:grid;gap:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+input,select,textarea{font:400 16px var(--body);padding:13px 14px;border:1px solid var(--line);background:var(--granite);color:var(--ink);border-radius:4px;width:100%;text-transform:none;letter-spacing:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--teal);border-color:transparent}
+.ok{display:none;padding:16px;border-left:3px solid var(--lichen);background:var(--granite)}
+.ok.show{display:block}
+.contacts{margin-top:28px;display:grid;gap:8px;font-size:15px}
+@media(max-width:850px){.book .wrap{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+footer{background:var(--basalt);color:#9aa19a;padding:36px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .stone{animation:none;opacity:1}
+  .pin circle.halo{animation:none}
+  .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Сейд">
+      <svg viewBox="0 0 26 30" aria-hidden="true"><ellipse cx="13" cy="25" rx="11" ry="4.5" fill="#181D1F"/><ellipse cx="13.5" cy="15.5" rx="8" ry="4" fill="#6f6e66"/><ellipse cx="12.5" cy="8" rx="5" ry="3.2" fill="#A94A2A"/><circle cx="13" cy="2.6" r="2" fill="#E0922F"/></svg>
+      <span data-i18n="brand">Сейд</span>
+    </a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#paths" data-i18n="nav1">Два пути</a></li>
+      <li><a href="#atlas" data-i18n="nav2">Атлас</a></li>
+      <li><a href="#tours" data-i18n="nav3">Маршруты</a></li>
+      <li><a href="#asia" data-i18n="nav4">Гостям из Азии</a></li>
+      <li><a href="#faq" data-i18n="nav5">Вопросы</a></li>
+    </ul></nav>
+    <div class="nav-r">
+      <div class="seg" role="group" aria-label="Language">
+        <button data-lang="ru" aria-pressed="true">RU</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="zh" aria-pressed="false">中文</button>
+      </div>
+      <select class="cur" id="cur" aria-label="Currency">
+        <option value="RUB">₽ RUB</option><option value="USD">$ USD</option><option value="CNY">¥ CNY</option><option value="INR">₹ INR</option><option value="MYR">RM MYR</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="mono coord eyebrow" style="margin:0">≈ 67°54′ N · 35°21′ E · <span data-i18n="h_coord">Сейдозеро</span></div>
+      <h1><span data-i18n="h1a">Камни помнят</span><br><em data-i18n="h1b">тех, кто пришёл первым</em></h1>
+      <p class="lead" data-i18n="h_lead"></p>
+      <div class="cta-row">
+        <a class="btn" href="#tours" data-i18n="cta1">Выбрать маршрут</a>
+        <a class="btn ghost" href="#book" data-i18n="cta2">Запросить закрытую экспедицию</a>
+      </div>
+      <div class="regions"><span data-i18n="r1">Кольский п-ов</span><span data-i18n="r2">Карелия</span><span data-i18n="r3">Пермский край</span><span data-i18n="r4">+ Турция · Мальта · Перу</span></div>
+    </div>
+    <div class="spiral-box">
+      <div class="mono walk-hint" data-i18n="walk">Проведите по камням — путь к центру</div>
+      <svg id="spiral" viewBox="-260 -260 520 520" role="img" aria-label="Stone labyrinth"></svg>
+      <div class="readout mono"><span id="rd1">—</span><span id="rd2" data-i18n="rd">лабиринт · спираль · сейд</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="paths">
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i18n="p_eye">Два способа увидеть север</span></div>
+    <h2 data-i18n="p_h">Классика — для всех.<br>Экспедиции — для тех, кто ищет.</h2>
+    <div class="paths rv">
+      <div class="path classic">
+        <div class="mono" data-i18n="pc_k">Классика</div>
+        <h3 data-i18n="pc_h">Экскурсии и прогулки</h3>
+        <p data-i18n="pc_p"></p>
+        <ul id="pc_l"></ul>
+      </div>
+      <div class="path excl">
+        <div class="mono" data-i18n="px_k">Эксклюзив</div>
+        <h3 data-i18n="px_h">Закрытые экспедиции</h3>
+        <p data-i18n="px_p"></p>
+        <ul id="px_l"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="atlas" style="background:var(--granite-2)">
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i18n="a_eye">Атлас мест силы</span></div>
+    <h2 data-i18n="a_h">Шесть точек на карте севера</h2>
+    <p class="lead" style="margin-top:18px" data-i18n="a_lead"></p>
+    <div class="atlas">
+      <div class="map rv">
+        <svg id="map" viewBox="0 0 600 420" role="group" aria-label="Map"></svg>
+      </div>
+      <aside class="panel rv" id="panel" aria-live="polite"></aside>
+    </div>
+    <div class="legend">
+      <span><i class="tag arch">A</i><span data-i18n="lg_a">Археология — документированные находки</span></span>
+      <span><i class="tag lore">P</i><span data-i18n="lg_l">Предание — святыня местных народов</span></span>
+      <span><i class="tag hyp">H</i><span data-i18n="lg_h">Гипотеза — версия исследователей</span></span>
+    </div>
+    <div class="abroad"><span class="mono" data-i18n="ab">Дальше за границей →</span>
+      <span class="chip">Göbekli Tepe</span><span class="chip">Ġgantija · Malta</span><span class="chip">Sacsayhuamán</span><span class="chip">Hampi</span><span class="chip">Giza · Abydos</span>
+    </div>
+  </div>
+</section>
+
+<section id="tours">
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i18n="t_eye">Маршруты и даты</span></div>
+    <h2 data-i18n="t_h">Выберите путь</h2>
+    <div class="filters" id="filters" role="group" aria-label="Filter"></div>
+    <div class="cards" id="cards"></div>
+    <p class="note" data-i18n="t_note"></p>
+  </div>
+</section>
+
+<section id="season" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i18n="s_eye">Когда ехать</span></div>
+    <h2 data-i18n="s_h">Север по месяцам</h2>
+    <div class="season" id="season"></div>
+  </div>
+</section>
+
+<section id="asia" class="asia">
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i18n="as_eye">Гостям из Китая, Индии и Малайзии</span></div>
+    <h2 data-i18n="as_h">Спираль знают во всём мире</h2>
+    <p class="lead" style="margin-top:18px" data-i18n="as_lead"></p>
+    <div class="asia-grid">
+      <div class="spiral-words rv" id="swords"></div>
+      <ul class="svc rv" id="svc"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="ethic">
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i18n="e_eye">Как мы работаем</span></div>
+    <h2 data-i18n="e_h">Мы не обещаем чудес.<br>Мы приводим к камню.</h2>
+    <div class="ethic rv" id="ethic"></div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow mono"><span data-i18n="f_eye">Вопросы</span></div>
+    <h2 data-i18n="f_h">Перед дорогой</h2>
+    <div class="faq" id="faqs"></div>
+  </div>
+</section>
+
+<section id="book" class="book">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow mono"><span data-i18n="b_eye">Заявка</span></div>
+      <h2 data-i18n="b_h">Запросить место</h2>
+      <p class="lead" style="margin-top:18px" data-i18n="b_lead"></p>
+      <div class="contacts mono">
+        <span>✉ hello@seid-expeditions.example</span>
+        <span>WhatsApp · WeChat · Telegram: +7 000 000-00-00</span>
+      </div>
+    </div>
+    <form id="form" novalidate>
+      <div class="row2">
+        <label><span data-i18n="f_name">Имя</span><input name="name" required autocomplete="name"></label>
+        <label><span data-i18n="f_contact">Почта / мессенджер</span><input name="contact" required></label>
+      </div>
+      <div class="row2">
+        <label><span data-i18n="f_country">Страна</span>
+          <select name="country"><option>Россия</option><option>中国 / China</option><option>India</option><option>Malaysia</option><option>—</option></select></label>
+        <label><span data-i18n="f_size">Участников</span><input name="size" type="number" min="1" max="20" value="2"></label>
+      </div>
+      <label><span data-i18n="f_tour">Маршрут</span><select name="tour" id="tourSel"></select></label>
+      <label><span data-i18n="f_msg">Что хотите увидеть</span><textarea name="msg" rows="4"></textarea></label>
+      <button class="btn amber" type="submit" data-i18n="f_send">Отправить заявку</button>
+      <div class="ok" id="ok" role="status"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Сейд</span><span data-i18n="foot">Уважайте святыни: камни не переставляем, подношения не оставляем.</span></div></footer>
+
+<script>
+/* ---------- DATA ---------- */
+const RATE={RUB:1,USD:.011,CNY:.08,INR:.92,MYR:.05}, SYM={RUB:'₽',USD:'$',CNY:'¥',INR:'₹',MYR:'RM'};
+const T={
+ru:{brand:'Сейд',nav1:'Два пути',nav2:'Атлас',nav3:'Маршруты',nav4:'Гостям из Азии',nav5:'Вопросы',
+h_coord:'Сейдозеро',h1a:'Камни помнят',h1b:'тех, кто пришёл первым',
+h_lead:'Экспедиции к мегалитам, лабиринтам и сейдам Кольского полуострова, Карелии и Урала. Для тех, кого интересуют древние цивилизации, а не только красивые виды.',
+cta1:'Выбрать маршрут',cta2:'Запросить закрытую экспедицию',r1:'Кольский п-ов',r2:'Карелия',r3:'Пермский край',r4:'+ Турция · Мальта · Перу',
+walk:'Проведите по камням — путь к центру',rd:'лабиринт · спираль · сейд',
+p_eye:'Два способа увидеть север',p_h:'Классика — для всех.<br>Экспедиции — для тех, кто ищет.',
+pc_k:'Классика',pc_h:'Экскурсии и прогулки',pc_p:'Однодневные и короткие выезды: маршрут, транспорт, рассказ гида. Подходит семьям и тем, кто впервые на севере.',
+pc_l:['Группы до 12 человек','Выезд из Мурманска, Петрозаводска, Перми','Лёгкие маршруты, без ночёвок в тундре'],
+px_k:'Эксклюзив',px_h:'Закрытые экспедиции',px_p:'Малые группы, ведущий-исследователь, места без туристической тропы. Ночёвки у объектов, наблюдения, полевой дневник.',
+px_l:['До 8 человек, отбор по заявке','Гид-исследователь: археология, этнография, топонимика','Доступ к объектам вне обычных маршрутов','Вечерние лекции и разбор гипотез'],
+a_eye:'Атлас мест силы',a_h:'Шесть точек на карте севера',a_lead:'Схематичная карта. Каждый объект помечен честно: что подтверждено раскопками, что хранит предание, а что остаётся гипотезой.',
+lg_a:'Археология — документированные находки',lg_l:'Предание — святыня местных народов',lg_h:'Гипотеза — версия исследователей',ab:'Дальше за границей →',
+t_eye:'Маршруты и даты',t_h:'Выберите путь',t_note:'Цены и даты ориентировочные: до подтверждения программы. Курс валют приблизительный.',
+f_all:'Все',f_c:'Классика',f_x:'Эксклюзив',f_kola:'Кольский',f_kar:'Карелия',f_perm:'Урал',f_int:'Зарубежье',
+days:'Дней',group:'Группа',when:'Даты',from:'от',book:'Запросить место',spots:'Мест: ',wait:'Лист ожидания',soon:'Скоро',
+s_eye:'Когда ехать',s_h:'Север по месяцам',
+as_eye:'Гостям из Китая, Индии и Малайзии',as_h:'Спираль знают во всём мире',
+as_lead:'Карельский лабиринт, шивалингам, древний ритуальный камень Хуншань — разные культуры, один язык: камень как точка связи с небом. Мы показываем север через этот язык и берём на себя дорогу.',
+e_eye:'Как мы работаем',e_h:'Мы не обещаем чудес.<br>Мы приводим к камню.',
+f_eye:'Вопросы',f_h:'Перед дорогой',b_eye:'Заявка',b_h:'Запросить место',b_lead:'Напишите, куда хотите и с кем. Ответим в течение суток, расскажем о датах и подготовке.',
+f_name:'Имя',f_contact:'Почта / мессенджер',f_country:'Страна',f_size:'Участников',f_tour:'Маршрут',f_msg:'Что хотите увидеть',f_send:'Отправить заявку',
+ok:'Заявка сформирована — откроется ваша почта. Если окно не открылось, напишите на hello@seid-expeditions.example',
+foot:'Уважайте святыни: камни не переставляем, подношения не оставляем.',
+tags:{arch:'Археология',lore:'Предание',hyp:'Гипотеза'},how:'Как добраться',tourLink:'Смотреть маршрут',
+months:['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
+srows:['Северное сияние','Белые ночи','Пешие походы','Снегоходы и зима'],
+swords:[['Сейд','Саамский священный камень на Кольском полуострове'],['Спираль','Каменные лабиринты Карелии и Белого моря'],['Лингам','Каменный символ в Индии: тот же принцип — вертикаль к небу']],
+svc:[['Гиды на английском и китайском','Переводчик в группе, материалы на вашем языке'],['Визовая поддержка','Приглашение и консультация по документам'],['Трансфер от аэропорта','Москва, Санкт-Петербург, Мурманск, Пермь'],['Питание','Вегетарианское и халяльное меню по запросу'],['WhatsApp и WeChat','Один менеджер на связи с заявки до возвращения']],
+ethic:[['Различаем факт и версию','Каждый объект помечен: археология, предание или гипотеза. Спорное мы называем спорным.'],['Не трогаем камни','Не переставляем, не забираем, не оставляем подношений. Святыня остаётся такой, какой её нашли.'],['Малые группы','Тихо у камня и бережно к тундре. Поэтому экспедиции — не больше восьми человек.']],
+faq:[['Нужна ли физическая подготовка?','Классические маршруты — для любой формы. На экспедициях ходим 8–15 км в день с рюкзаком; уровень указан в каждой карточке.'],['Что с погодой и безопасностью?','Север меняет погоду за час. Выдаём чек-лист снаряжения, в группе всегда есть рация и аптечка, маршрут согласуем с местными службами.'],['Нужна ли виза гражданам Китая, Индии, Малайзии?','Правила зависят от гражданства и меняются. Проверим для вас актуальный порядок и подготовим приглашение.'],['Правда ли, что места обладают силой?','Мы не утверждаем этого. Мы показываем объекты, которые тысячи лет считали священными, и рассказываем, что о них известно науке.']]},
+en:{brand:'Seid',nav1:'Two paths',nav2:'Atlas',nav3:'Tours',nav4:'For Asian guests',nav5:'FAQ',
+h_coord:'Lake Seidozero',h1a:'The stones remember',h1b:'those who came first',
+h_lead:'Expeditions to the megaliths, stone labyrinths and seids of the Kola Peninsula, Karelia and the Urals. For travellers drawn to ancient civilisations, not just scenery.',
+cta1:'Find a route',cta2:'Request a private expedition',r1:'Kola Peninsula',r2:'Karelia',r3:'Perm Krai',r4:'+ Türkiye · Malta · Peru',
+walk:'Move across the stones — the way to the centre',rd:'labyrinth · spiral · seid',
+p_eye:'Two ways to see the North',p_h:'Classic tours for everyone.<br>Expeditions for seekers.',
+pc_k:'Classic',pc_h:'Excursions & walks',pc_p:'Day trips and short outings: route, transport and a guide’s story. Suited to families and first-time visitors to the North.',
+pc_l:['Groups up to 12','Departures from Murmansk, Petrozavodsk, Perm','Easy routes, no nights in the tundra'],
+px_k:'Exclusive',px_h:'Private expeditions',px_p:'Small groups, a researcher as your guide, sites far from the tourist trail. Nights near the sites, field observations, a field journal.',
+px_l:['Up to 8 people, selected by application','Researcher-guide: archaeology, ethnography, toponymy','Access to sites off standard routes','Evening lectures and debates on hypotheses'],
+a_eye:'Atlas of power places',a_h:'Six points on the northern map',a_lead:'A schematic map. Every site is labelled honestly: what excavation confirms, what tradition holds, and what remains a hypothesis.',
+lg_a:'Archaeology — documented finds',lg_l:'Tradition — sacred to local peoples',lg_h:'Hypothesis — researchers’ theory',ab:'Further abroad →',
+t_eye:'Routes & dates',t_h:'Choose your path',t_note:'Prices and dates are indicative until the programme is confirmed. Exchange rates are approximate.',
+f_all:'All',f_c:'Classic',f_x:'Exclusive',f_kola:'Kola',f_kar:'Karelia',f_perm:'Urals',f_int:'Abroad',
+days:'Days',group:'Group',when:'Dates',from:'from',book:'Request a place',spots:'Spots: ',wait:'Waitlist',soon:'Soon',
+s_eye:'When to go',s_h:'The North, month by month',
+as_eye:'For guests from China, India and Malaysia',as_h:'The spiral is known worldwide',
+as_lead:'A Karelian labyrinth, a shivalinga, the ritual stones of China’s Hongshan culture — different peoples, one language: stone as a point of contact with the sky. We show the North through that language and handle the journey.',
+e_eye:'How we work',e_h:'We promise no miracles.<br>We take you to the stone.',
+f_eye:'FAQ',f_h:'Before you travel',b_eye:'Request',b_h:'Request a place',b_lead:'Tell us where you want to go and with whom. We reply within a day with dates and preparation details.',
+f_name:'Name',f_contact:'Email / messenger',f_country:'Country',f_size:'Travellers',f_tour:'Route',f_msg:'What do you want to see',f_send:'Send request',
+ok:'Request prepared — your email app will open. If it does not, write to hello@seid-expeditions.example',
+foot:'Respect the sacred: we never move stones or leave offerings.',
+tags:{arch:'Archaeology',lore:'Tradition',hyp:'Hypothesis'},how:'Getting there',tourLink:'View route',
+months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+srows:['Northern lights','White nights','Hiking','Snowmobile & winter'],
+swords:[['Seid','Sacred Sámi stone of the Kola Peninsula'],['Spiral','Stone labyrinths of Karelia and the White Sea'],['Linga','Stone symbol in India: the same idea — a vertical to the sky']],
+svc:[['English & Chinese guides','Interpreter in the group, materials in your language'],['Visa support','Invitation letter and document guidance'],['Airport transfers','Moscow, St Petersburg, Murmansk, Perm'],['Meals','Vegetarian and halal menus on request'],['WhatsApp & WeChat','One manager from request to return']],
+ethic:[['Fact vs. theory','Every site is marked: archaeology, tradition or hypothesis. We call the disputed disputed.'],['We never touch the stones','No moving, no taking, no offerings. A shrine stays as we found it.'],['Small groups','Quiet at the stone, gentle on the tundra. That is why expeditions cap at eight.']],
+faq:[['Do I need to be fit?','Classic routes suit any level. On expeditions we walk 8–15 km a day with a pack; the level is shown on every card.'],['What about weather and safety?','The North changes weather within an hour. We provide a gear checklist, carry a radio and first-aid kit, and register routes with local services.'],['Do citizens of China, India or Malaysia need a visa?','Rules depend on citizenship and change. We will check the current procedure for you and prepare the invitation.'],['Do these places really hold power?','We make no such claim. We show sites that were held sacred for thousands of years and explain what science knows about them.']]},
+zh:{brand:'赛德',nav1:'两种方式',nav2:'地图',nav3:'线路',nav4:'亚洲游客',nav5:'常见问题',
+h_coord:'塞伊多湖',h1a:'石头记得',h1b:'最早抵达的人',
+h_lead:'探访科拉半岛、卡累利阿和乌拉尔的巨石、石迷宫与圣石“塞德”。为关注古代文明、而不只是风景的旅行者而设。',
+cta1:'选择线路',cta2:'预约小团探险',r1:'科拉半岛',r2:'卡累利阿',r3:'彼尔姆边疆区',r4:'+ 土耳其 · 马耳他 · 秘鲁',
+walk:'在石头上滑动——通往中心之路',rd:'迷宫 · 螺旋 · 塞德',
+p_eye:'走进北方的两种方式',p_h:'经典线路，人人适合。<br>探险线路，献给探索者。',
+pc_k:'经典',pc_h:'游览与徒步',pc_p:'一日及短途出行：路线、交通与导游讲解。适合家庭和初次来北方的游客。',
+pc_l:['每团最多12人','从摩尔曼斯克、彼得罗扎沃茨克、彼尔姆出发','轻松路线，不在苔原过夜'],
+px_k:'专属',px_h:'小团探险',px_p:'小团出行，研究者带队，前往远离游客步道的地点。在遗迹旁露营，进行实地观察，并撰写野外日志。',
+px_l:['最多8人，申请筛选','研究型向导：考古、民族学、地名学','进入常规线路之外的遗址','晚间讲座与假说研讨'],
+a_eye:'能量之地地图',a_h:'北方地图上的六个点',a_lead:'示意地图。每处遗址都如实标注：哪些有考古证据，哪些出自传说，哪些仍是假说。',
+lg_a:'考古——有记录的发现',lg_l:'传说——当地民族的圣地',lg_h:'假说——研究者的推测',ab:'更远的海外 →',
+t_eye:'线路与日期',t_h:'选择你的路',t_note:'价格和日期为参考，以最终确认的行程为准。汇率为大致估算。',
+f_all:'全部',f_c:'经典',f_x:'专属',f_kola:'科拉',f_kar:'卡累利阿',f_perm:'乌拉尔',f_int:'海外',
+days:'天数',group:'团队',when:'日期',from:'起',book:'预约名额',spots:'名额：',wait:'候补名单',soon:'即将推出',
+s_eye:'最佳时间',s_h:'逐月看北方',
+as_eye:'致来自中国、印度与马来西亚的游客',as_h:'螺旋，世界通用的语言',
+as_lead:'卡累利阿的石迷宫、印度的湿婆林伽、中国红山文化的祭祀石——不同的民族，同一种语言：石头是通向天空的连接点。我们用这种语言带你看北方，并负责全程安排。',
+e_eye:'我们的原则',e_h:'我们不承诺奇迹。<br>我们带你来到石前。',
+f_eye:'常见问题',f_h:'出发之前',b_eye:'申请',b_h:'预约名额',b_lead:'告诉我们想去哪里、和谁同行。我们会在一天内回复日期与准备事项。',
+f_name:'姓名',f_contact:'邮箱 / 通讯软件',f_country:'国家',f_size:'人数',f_tour:'线路',f_msg:'你想看什么',f_send:'提交申请',
+ok:'申请已生成——将打开你的邮件应用。如未打开，请发送至 hello@seid-expeditions.example',
+foot:'尊重圣地：不移动石头，不留下供品。',
+tags:{arch:'考古',lore:'传说',hyp:'假说'},how:'交通',tourLink:'查看线路',
+months:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+srows:['极光','白夜','徒步','雪地摩托与冬季'],
+swords:[['塞德','科拉半岛萨米人的圣石'],['螺旋','卡累利阿与白海的石迷宫'],['林伽','印度的石质象征：同一个意象——直指天空的竖线']],
+svc:[['英语与中文向导','团内配翻译，资料提供您的语言'],['签证协助','邀请函与材料指导'],['机场接送','莫斯科、圣彼得堡、摩尔曼斯克、彼尔姆'],['餐食','可提供素食与清真餐'],['WhatsApp 与微信','从申请到返程，一位专属顾问']],
+ethic:[['区分事实与假说','每处遗址都标明：考古、传说或假说。有争议的，我们就说有争议。'],['不触碰石头','不移动、不带走、不留供品。圣地保持原样。'],['小团出行','在石前安静，对苔原爱护。因此探险团最多八人。']],
+faq:[['需要体能准备吗？','经典线路适合任何体能。探险线路每天背包步行8–15公里，每张卡片都标明强度。'],['天气与安全如何保障？','北方天气一小时内就会变化。我们提供装备清单，团队配备对讲机和急救包，并向当地部门报备路线。'],['中国、印度、马来西亚公民需要签证吗？','规则取决于国籍且会变化。我们会为您核实最新办法并准备邀请函。'],['这些地方真的有“能量”吗？','我们不作此断言。我们展示被千年尊为圣地的遗址，并讲述科学对它们的了解。']]}
+};
+const SITES=[
+{id:'seid',x:142,y:99,reg:'kola',tag:'lore',c:'≈ 67.9° N, 35.4° E',n:{ru:'Сейдозеро и Куйва',en:'Seidozero & Kuiva',zh:'塞伊多湖与库伊瓦'},
+ d:{ru:'Священное озеро саамов в Ловозёрских тундрах. На скале над озером виден силуэт «Куйвы» — фигуры, которую одни считают природной, другие — рукотворным образом. Научного консенсуса нет.',en:'A sacred Sámi lake in the Lovozero tundra. On the cliff above it is the figure “Kuiva” — seen by some as natural, by others as a carved image. There is no scientific consensus.',zh:'洛沃泽罗苔原中萨米人的圣湖。湖上方岩壁有“库伊瓦”人形轮廓，有人认为是天然形成，有人认为是人工所作，学界尚无定论。'},
+ h:{ru:'От Мурманска ~3 ч до Ловозера, далее пешком или на вездеходе.',en:'About 3 h from Murmansk to Lovozero, then on foot or by all-terrain vehicle.',zh:'从摩尔曼斯克到洛沃泽罗约3小时，再徒步或乘越野车。'}},
+{id:'khib',x:113,y:106,reg:'kola',tag:'lore',c:'≈ 67.7° N, 33.7° E',n:{ru:'Хибины и Ловозёрские тундры',en:'Khibiny & Lovozero Tundras',zh:'希比内与洛沃泽罗苔原'},
+ d:{ru:'Горные массивы с саамскими сейдами — камнями на ножках. По преданию, саамы приносили к ним дары. Идеальный вход на север для первой поездки.',en:'Mountain massifs with Sámi seids — stones set on supports. Tradition says the Sámi brought offerings to them. An ideal first step into the North.',zh:'山地中分布着萨米人的塞德——立于支点上的石头。传说萨米人曾向它们献祭。是初访北方的理想起点。'},
+ h:{ru:'Кировск — 2 ч от аэропорта Мурманска.',en:'Kirovsk — 2 h from Murmansk airport.',zh:'基洛夫斯克——距摩尔曼斯克机场约2小时。'}},
+{id:'votto',x:101,y:245,reg:'kar',tag:'hyp',c:'≈ 63.1° N, 32.9° E',n:{ru:'Воттоваара',en:'Vottovaara',zh:'沃托瓦拉山'},
+ d:{ru:'Гора в Карелии с каменными сейдами, «лестницей» и россыпями валунов. Возраст и назначение конструкций обсуждаются: от природных форм до культовых сооружений.',en:'A Karelian mountain with seids, a stone “stairway” and boulder fields. The age and purpose of the structures are debated, from natural forms to cult sites.',zh:'卡累利阿山峰，有塞德、石“阶梯”和巨石群。这些结构的年代与用途存在争议，从天然地貌到祭祀遗址皆有说法。'},
+ h:{ru:'Около 140 км от Петрозаводска, последний участок пешком.',en:'About 140 km from Petrozavodsk, final stretch on foot.',zh:'距彼得罗扎沃茨克约140公里，最后一段需步行。'}},
+{id:'alho',x:63,y:291,reg:'kar',tag:'lore',c:'≈ 61.6° N, 30.6° E',n:{ru:'Лабиринты Ладоги: Алхо и Куркиеки',en:'Ladoga labyrinths: Alho & Kurkieki',zh:'拉多加石迷宫：阿尔霍与库尔基耶基'},
+ d:{ru:'Спираль из камней с центральным «тором» у посёлка Алхо и святилище Куркиеки у Ладоги. Считается, что идти к центру нужно медленно, ладонями вниз.',en:'A spiral of stones with a central cairn near Alho and the Kurkieki sanctuary by Lake Ladoga. Visitors walk slowly to the centre, palms down.',zh:'阿尔霍村旁的螺旋石阵，中心有石堆；拉多加湖边另有库尔基耶基圣地。据说应缓步走向中心，掌心向下。'},
+ h:{ru:'От Санкт-Петербурга около 5 ч на машине.',en:'About 5 h by car from St Petersburg.',zh:'从圣彼得堡驱车约5小时。'}},
+{id:'vetlan',x:508,y:309,reg:'perm',tag:'lore',c:'≈ 61.0° N, 57.6° E',n:{ru:'Ветлан',en:'Vetlan',zh:'韦特兰山'},
+ d:{ru:'Гора на Вишере, почитаемая у манси. Заповедная территория: вход возможен только по специальному разрешению и с проводником.',en:'A mountain on the Vishera river, venerated by the Mansi. A protected area: entry only with a permit and a guide.',zh:'维舍拉河畔的山，被曼西人尊为圣山。属保护区，须持许可并由向导带领方可进入。'},
+ h:{ru:'Красновишерск, далее сплав или переход 2–3 дня.',en:'Krasnovishersk, then 2–3 days by raft or on foot.',zh:'抵达克拉斯诺维舍尔斯克后，漂流或徒步2–3天。'}},
+{id:'pom',x:521,y:322,reg:'perm',tag:'hyp',c:'≈ 60.6° N, 58.8° E',n:{ru:'Помяненный камень',en:'Pomyanenny Kamen',zh:'波米亚宁尼石'},
+ d:{ru:'Скальное обнажение на Северном Урале. Место окружено легендами и привлекает исследователей, но надёжных археологических подтверждений особой роли пока нет.',en:'A rock outcrop in the Northern Urals. Surrounded by legend and drawing researchers, but with no firm archaeological evidence of a special role yet.',zh:'北乌拉尔的岩石露头。传说众多，吸引研究者前来，但尚无可靠的考古证据表明其特殊用途。'},
+ h:{ru:'Только экспедиционный формат, 6–9 дней.',en:'Expedition format only, 6–9 days.',zh:'仅限探险形式，6–9天。'}}
+];
+const TOURS=[
+{id:'t1',type:'x',reg:'kola',g:'seid',days:6,grp:8,date:{ru:'июль 2027',en:'Jul 2027',zh:'2027年7月'},rub:78000,spots:3,
+ n:{ru:'Сейдозеро: тропа саамов',en:'Seidozero: the Sámi trail',zh:'塞伊多湖：萨米之路'},
+ s:{ru:'Пешая экспедиция к священному озеру и Куйве с ночёвками и полевыми наблюдениями.',en:'A trek to the sacred lake and Kuiva with camp nights and field observations.',zh:'徒步前往圣湖与库伊瓦，露营并进行实地观察。'}},
+{id:'t2',type:'c',reg:'kola',g:'khib',days:1,grp:12,date:{ru:'ежедневно',en:'daily',zh:'每日'},rub:9000,spots:null,
+ n:{ru:'Ловозеро и тундры за день',en:'Lovozero & the tundras in a day',zh:'一日游：洛沃泽罗与苔原'},
+ s:{ru:'Выезд из Мурманска: саамская деревня, Ловозёрские тундры, рассказ о сейдах.',en:'From Murmansk: a Sámi village, the Lovozero tundras, and the story of the seids.',zh:'从摩尔曼斯克出发：萨米村落、洛沃泽罗苔原，以及塞德的故事。'}},
+{id:'t3',type:'c',reg:'kola',g:'khib',days:4,grp:12,date:{ru:'ноябрь — март',en:'Nov – Mar',zh:'11月–3月'},rub:38000,spots:null,
+ n:{ru:'Хибины, Териберка и сияние',en:'Khibiny, Teriberka & the aurora',zh:'希比内、捷里别尔卡与极光'},
+ s:{ru:'Классическая зимняя поездка с охотой на северное сияние и одним днём у сейдов.',en:'A classic winter trip: aurora hunting and one day among seids.',zh:'经典冬季行程：追极光，并有一天探访塞德。'}},
+{id:'t4',type:'x',reg:'kar',g:'votto',days:3,grp:8,date:{ru:'сентябрь 2027',en:'Sep 2027',zh:'2027年9月'},rub:42000,spots:5,
+ n:{ru:'Воттоваара: ночь на горе',en:'Vottovaara: a night on the mountain',zh:'沃托瓦拉：山上一夜'},
+ s:{ru:'Закрытый выход к сейдам с ведущим-исследователем и разбором версий об их происхождении.',en:'A private ascent to the seids with a researcher, weighing theories of their origin.',zh:'研究者带队的小团登山，探讨这些石头的起源假说。'}},
+{id:'t5',type:'c',reg:'kar',g:'alho',days:2,grp:12,date:{ru:'май — сентябрь',en:'May – Sep',zh:'5月–9月'},rub:21000,spots:null,
+ n:{ru:'Ладога: лабиринты и острова',en:'Ladoga: labyrinths & islands',zh:'拉多加：石迷宫与岛屿'},
+ s:{ru:'Алхо, Куркиеки и остров Койонсаари: два дня у воды и камня.',en:'Alho, Kurkieki and Koyonsaari island: two days of water and stone.',zh:'阿尔霍、库尔基耶基与科约恩萨里岛：两天湖光与石影。'}},
+{id:'t6',type:'x',reg:'perm',g:'vetlan',days:9,grp:6,date:{ru:'август 2027',en:'Aug 2027',zh:'2027年8月'},rub:96000,spots:2,
+ n:{ru:'Вишера: Ветлан и Помяненный камень',en:'Vishera: Vetlan & Pomyanenny Kamen',zh:'维舍拉：韦特兰与波米亚宁尼石'},
+ s:{ru:'Сплав и переход по заповедным местам манси с проводником и этнографом.',en:'Rafting and trekking through Mansi sacred land with a guide and an ethnographer.',zh:'在向导与民族学者陪同下，漂流并徒步穿越曼西圣地。'}},
+{id:'t7',type:'c',reg:'perm',g:'pom',days:3,grp:12,date:{ru:'круглый год',en:'year-round',zh:'全年'},rub:24000,spots:null,
+ n:{ru:'Кунгурская пещера и Прикамье',en:'Kungur Cave & the Kama region',zh:'孔古尔冰洞与卡马地区'},
+ s:{ru:'Лёгкая поездка из Перми: ледяная пещера, старинные селения, краеведческий музей.',en:'An easy trip from Perm: an ice cave, old settlements and a local-history museum.',zh:'从彼尔姆出发的轻松行程：冰洞、古村与地方博物馆。'}},
+{id:'t8',type:'x',reg:'int',g:null,days:8,grp:10,date:{ru:'весна 2027',en:'Spring 2027',zh:'2027年春'},rub:220000,spots:0,
+ n:{ru:'Гёбекли-Тепе и Таш-Тепелер',en:'Göbekli Tepe & Taş Tepeler',zh:'哥贝克力石阵与石丘群'},
+ s:{ru:'Старейшие известные храмовые комплексы в Турции. Набор в лист ожидания.',en:'Türkiye’s oldest known temple complexes. Waitlist open.',zh:'土耳其已知最古老的神庙遗址群。开放候补名单。'}},
+{id:'t9',type:'x',reg:'int',g:null,days:10,grp:10,date:{ru:'2028',en:'2028',zh:'2028年'},rub:260000,spots:-1,
+ n:{ru:'Мальта и Перу: мегалиты мира',en:'Malta & Peru: megaliths of the world',zh:'马耳他与秘鲁：世界巨石'},
+ s:{ru:'Ġgantija, Hypogeum, затем Саксайуаман. Программа в разработке.',en:'Ġgantija, the Hypogeum, then Sacsayhuamán. Programme in development.',zh:'吉干提亚、地下神殿，以及萨克塞华曼。行程研发中。'}}
+];
+const GLYPH={
+ kola:'<g fill="none" stroke="currentColor" stroke-width="3"><ellipse cx="55" cy="90" rx="38" ry="9"/><ellipse cx="55" cy="68" rx="26" ry="8"/><ellipse cx="52" cy="48" rx="15" ry="7"/><circle cx="55" cy="25" r="9"/></g>',
+ kar:'<g fill="none" stroke="currentColor" stroke-width="3"><path d="M55 55c0-6 8-6 8 0s-10 8-14 0-2-16 10-18 22 6 22 22-14 28-32 26-30-18-26-38"/></g>',
+ perm:'<g fill="none" stroke="currentColor" stroke-width="3"><path d="M10 95V45l14-10 10 12 14-30 16 24 12-10 24 64z" /><path d="M10 95h100"/></g>',
+ int:'<g fill="none" stroke="currentColor" stroke-width="3"><circle cx="55" cy="55" r="42"/><ellipse cx="55" cy="55" rx="18" ry="42"/><path d="M13 55h84M20 33h70M20 77h70"/></g>'};
+const LC='ru-lang';
+let lang='ru',cur='RUB',filter='all',selSite='seid';
+const dict=()=>T[lang];
+
+/* ---------- SPIRAL ---------- */
+function buildSpiral(){
+  const svg=document.getElementById('spiral'),g=30,gap=19;
+  let t=Math.PI*1.2,list=[];
+  while(true){const r=g*t/(2*Math.PI);if(r>238)break;list.push([Math.cos(t)*r,Math.sin(t)*r]);t+=gap/r;}
+  list.reverse();const N=list.length;
+  let h='<circle r="250" fill="none" stroke="rgba(24,29,31,.12)" stroke-dasharray="2 7"/>';
+  list.forEach((p,i)=>{
+    const rx=6+((i*37)%4), ry=rx*(.62+((i*13)%4)/10), rot=(i*47)%180;
+    h+=`<ellipse class="stone${i>=N-3?' core':''}" data-i="${i}" style="--i:${i}" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" rx="${rx}" ry="${ry.toFixed(1)}" transform="rotate(${rot} ${p[0].toFixed(1)} ${p[1].toFixed(1)})"/>`;
+  });
+  svg.innerHTML=h;
+  const st=[...svg.querySelectorAll('.stone')];
+  const rd=document.getElementById('rd1');
+  const light=i=>{st.forEach((s,k)=>s.classList.toggle('lit',k>=i&&k<N-3));rd.textContent=`${String(N-i).padStart(2,'0')} / ${N}`};
+  st.forEach((s,i)=>{s.addEventListener('pointerenter',()=>light(i));});
+  svg.addEventListener('pointerleave',()=>{st.forEach(s=>s.classList.remove('lit'));rd.textContent='—'});
+}
+
+/* ---------- MAP ---------- */
+function buildMap(){
+  const svg=document.getElementById('map');let h='';
+  for(let lat=58;lat<=70;lat+=2){const y=20+(70.5-lat)/12.5*380;h+=`<line class="grid-l" x1="0" x2="600" y1="${y}" y2="${y}"/><text class="maplabel" x="6" y="${y-4}">${lat}°N</text>`}
+  for(let lon=28;lon<=62;lon+=4){const x=20+(lon-28)/34*560;h+=`<line class="grid-l" y1="0" y2="420" x1="${x}" x2="${x}"/><text class="maplabel" x="${x+3}" y="414">${lon}°E</text>`}
+  const ay=20+(70.5-66.56)/12.5*380;
+  h+=`<line class="arctic" x1="0" x2="600" y1="${ay}" y2="${ay}"/><text class="maplabel" x="420" y="${ay-6}" style="fill:var(--teal)">ARCTIC CIRCLE 66°34′</text>`;
+  const rl={kola:[150,60],kar:[110,200],perm:[470,260]};
+  SITES.forEach(s=>{h+=`<g class="pin" tabindex="0" role="button" data-id="${s.id}" aria-pressed="${s.id===selSite}" aria-label="${s.n[lang]}"><circle class="halo" cx="${s.x}" cy="${s.y}" r="9"/><circle class="dot" cx="${s.x}" cy="${s.y}" r="7"/><text x="${s.x+14}" y="${s.y+4}">${s.n[lang].split(/[:·]| и | & |与/)[0].trim().slice(0,22)}</text></g>`});
+  svg.innerHTML=h;
+  svg.querySelectorAll('.pin').forEach(p=>{
+    const go=()=>{selSite=p.dataset.id;buildMap();renderPanel()};
+    p.addEventListener('click',go);p.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+  });
+}
+function renderPanel(){
+  const s=SITES.find(x=>x.id===selSite),d=dict(),t=TOURS.find(x=>x.g===s.id);
+  document.getElementById('panel').innerHTML=`<span class="tag ${s.tag}">${d.tags[s.tag]}</span><h3>${s.n[lang]}</h3><div class="mono meta">${s.c}</div><p>${s.d[lang]}</p><p style="font-size:15px;color:var(--ink-soft)"><b>${d.how}:</b> ${s.h[lang]}</p>${t?`<a class="btn sm" href="#tours" data-filter="${s.reg}">${d.tourLink} →</a>`:''}`;
+  const a=document.querySelector('#panel [data-filter]');
+  if(a)a.addEventListener('click',()=>{filter=a.dataset.filter;renderTours()});
+}
+
+/* ---------- TOURS ---------- */
+const fmt=rub=>{const v=Math.round(rub*RATE[cur]/(cur==='RUB'?1000:(cur==='INR'?100:10)))*(cur==='RUB'?1000:(cur==='INR'?100:10));return SYM[cur]+' '+v.toLocaleString(lang==='ru'?'ru-RU':'en-US')};
+function renderTours(){
+  const d=dict(),F=[['all',d.f_all],['c',d.f_c],['x',d.f_x],['kola',d.f_kola],['kar',d.f_kar],['perm',d.f_perm],['int',d.f_int]];
+  document.getElementById('filters').innerHTML=F.map(([k,v])=>`<button data-f="${k}" aria-pressed="${k===filter}">${v}</button>`).join('');
+  document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;renderTours()});
+  const list=TOURS.filter(t=>filter==='all'||t.type===filter||t.reg===filter);
+  document.getElementById('cards').innerHTML=list.map(t=>{
+    const sp=t.spots===null?'':(t.spots>0?`${d.spots}${t.spots}`:(t.spots===0?d.wait:d.soon));
+    const key=t.reg;
+    return `<article class="card ${t.type}">
+      <div class="art" style="color:${t.type==='x'?'var(--amber)':'var(--basalt)'}"><svg viewBox="0 0 110 110" aria-hidden="true">${GLYPH[key]}</svg>
+        <span class="badge tag ${t.type==='x'?'lore':'arch'}">${t.type==='x'?d.f_x:d.f_c}</span>${sp?`<span class="spots">${sp}</span>`:''}</div>
+      <div class="bd"><h3>${t.n[lang]}</h3><p>${t.s[lang]}</p>
+        <div class="facts"><div><b>${d.days}</b>${t.days}</div><div><b>${d.group}</b>≤ ${t.grp}</div><div><b>${d.when}</b>${t.date[lang]}</div></div>
+        <div class="price"><div><small>${d.from}</small><strong>${fmt(t.rub)}</strong></div><a class="btn sm ${t.type==='x'?'amber':''}" href="#book" data-tour="${t.id}">${d.book}</a></div>
+      </div></article>`}).join('');
+  document.querySelectorAll('[data-tour]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('tourSel').value=a.dataset.tour}));
+  const sel=document.getElementById('tourSel'),v=sel.value;
+  sel.innerHTML=TOURS.map(t=>`<option value="${t.id}">${t.n[lang]}</option>`).join('')+`<option value="x">${lang==='ru'?'Индивидуальный маршрут':lang==='zh'?'定制线路':'Custom route'}</option>`;
+  if(v)sel.value=v;
+}
+
+/* ---------- STATIC BLOCKS ---------- */
+function renderBlocks(){
+  const d=dict();
+  document.getElementById('pc_l').innerHTML=d.pc_l.map(x=>`<li>${x}</li>`).join('');
+  document.getElementById('px_l').innerHTML=d.px_l.map(x=>`<li>${x}</li>`).join('');
+  document.getElementById('swords').innerHTML=d.swords.map(([a,b])=>`<div><b>${a}</b>${b}</div>`).join('');
+  document.getElementById('svc').innerHTML=d.svc.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join('');
+  document.getElementById('ethic').innerHTML=d.ethic.map(([a,b])=>`<div><h3>${a}</h3><p>${b}</p></div>`).join('');
+  document.getElementById('faqs').innerHTML=d.faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('');
+  const rows=[[[1,2,3,9,10,11,12],'a'],[[6,7],'w'],[[6,7,8,9],'h2'],[[2,3,4],'s']];
+  let h=`<div class="srow h"><span></span>${d.months.map(m=>`<span class="m">${m}</span>`).join('')}</div>`;
+  rows.forEach(([on,c],i)=>{h+=`<div class="srow ${c}"><span class="l">${d.srows[i]}</span>${d.months.map((_,m)=>`<i class="${on.includes(m+1)?'on':''}"></i>`).join('')}</div>`});
+  document.getElementById('season').innerHTML=h;
+}
+function applyLang(){
+  const d=dict();
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=d[el.dataset.i18n];if(typeof v==='string')el.innerHTML=v});
+  document.title={ru:'Сейд — экспедиции к местам силы',en:'Seid — expeditions to places of power',zh:'赛德 — 能量之地探险'}[lang];
+  document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
+  renderBlocks();buildMap();renderPanel();renderTours();observe();
+}
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem(LC,lang)}catch(e){}applyLang()});
+document.getElementById('cur').onchange=e=>{cur=e.target.value;renderTours()};
+
+/* form */
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target,ok=document.getElementById('ok');
+  if(!f.name.value.trim()||!f.contact.value.trim()){f.reportValidity&&0;(f.name.value.trim()?f.contact:f.name).focus();return}
+  const tour=document.getElementById('tourSel').selectedOptions[0].textContent;
+  const body=`Name: ${f.name.value}\nContact: ${f.contact.value}\nCountry: ${f.country.value}\nTravellers: ${f.size.value}\nRoute: ${tour}\n\n${f.msg.value}`;
+  ok.textContent=dict().ok;ok.classList.add('show');
+  location.href='mailto:hello@seid-expeditions.example?subject='+encodeURIComponent('Seid — '+tour)+'&body='+encodeURIComponent(body);
+});
+
+/* reveal */
+let io;
+function observe(){
+  const els=document.querySelectorAll('.rv:not(.in)');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  io=io||new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+  els.forEach(e=>io.observe(e));
+}
+
+/* init */
+try{const s=localStorage.getItem(LC);if(s&&T[s])lang=s;else{const n=(navigator.language||'').slice(0,2);lang=n==='zh'?'zh':(n==='ru'?'ru':'en')}}catch(e){}
+buildSpiral();applyLang();
+</script>
+</body>
+</html>
